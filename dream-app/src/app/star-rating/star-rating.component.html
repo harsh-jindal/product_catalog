@@ -1,0 +1,5 @@
+<div>
+<span class="fa fa-star" *ngFor="let i of arr(numFullstars).fill(1); let j=index;" (click)="clicked('fullstar',j)"></span>
+<span class="fa fa-star-half-o" *ngFor="let i of arr(numHalfstars).fill(1); let j=index;" (click)="clicked('halfstar',j)"></span>
+<span class="fa fa-star-o" *ngFor="let i of arr(numEmptystars).fill(1); let j=index;" (click)="clicked('emyptystar',j)"></span>
+</div>

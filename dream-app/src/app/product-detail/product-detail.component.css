@@ -1,0 +1,46 @@
+.small span{
+    display: block;
+    font-size:16px;
+}
+
+.small{
+    margin:30px 0px;
+}
+
+.descript{
+    margin-bottom: 30px;
+}
+
+.btnStyle{
+    margin: 20px 0;
+}
+
+.img-responsive{
+    padding-left: 10px;
+}
+
+.card-header{
+    color: white;
+    background-color: royalblue;
+}
+
+.card-body{
+    padding-top:0;
+}
+
+.review-list{
+    list-style-type:none;
+}
+
+.bold{
+    font-weight: bold;
+    list-style-type: square;
+}
+
+.margin-bottom-small{
+    margin-bottom: 10px;
+}
+
+.control-label{
+    padding-left: 12%;
+}

@@ -1,0 +1,48 @@
+<div class="container margin-large">
+  <h2 class="margin-top-large">Product Catalog</h2>
+  <hr>
+  <form class="form-horizontal">
+    <div class="form-group row">
+      <label for="product-search" class="control-label col-sm-3">Search for Products</label>
+    <div class="col-sm-9">
+      <input type="search" id="product-search" class="form-control" [(ngModel)]="searchString" name="search-product" (ngModelChange)="productSearch()">
+    </div>
+    </div>
+    <div class="alert alert-success" id="searchFor">You are searching for <mark>{{searchString}}</mark></div>
+  </form>
+
+  <div class="alert alert-primary" *ngIf="!products.length">
+    Sorry, No items to display.
+  </div>
+<table class="table table-bordered" *ngIf="products.length">
+  <thead>
+  <tr>
+    <th>Image
+      <input type="button" value="{{isImageSeen ? 'Hide' : 'Show'}}" class="btn btn-primary btn-sm" (click)="toggleImage()"/>
+    </th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Code</th>
+    <th>Price</th>
+    <th>Rating</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of filteredProducts">
+      <td><img [src]="product.imageUrl" [width]="img50" *ngIf="isImageSeen"/></td>
+      <td>
+        <a [routerLink]="['/products',product.id]">{{product.name}}</a></td>
+      <td title="{{product.description}}">
+        <div *ngIf="desc">{{product.description | ellipsize:20}}</div>
+        <div *ngIf="!desc">{{product.description}}</div>
+        <span (click)="toggleDesc($event)"><small>{{desc ? 'show more': 'show less'}}</small></span>
+      </td>
+      <td>{{product.code}}</td>
+      <td>{{product.price | currency:'USD':true:'1.1-2'}}</td>
+      <td>
+        <app-star-rating [rating]="product.starRating" (clickRating)="ratingClicked( $event )"></app-star-rating>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

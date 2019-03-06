@@ -1,0 +1,49 @@
+<div class="container margin-large">
+  <h1>Feedback</h1>
+  <hr>
+  <div class="panel panel-primary">
+    <div class="panel-heading">Submit Feedback</div>
+    <div class="panel-body">
+        <div class="row">
+      <form #formReview="ngForm" (ngSubmit)="feedback()">
+        
+          <div class="form-group" [ngClass]="{'has-error':nameModel.invalid && (nameModel.dirty || nameModel.touched)}">
+            <label class="control-label col-sm-2" for="name">Name</label>
+            <div class="col-sm-10 margin-bottom-small">
+              <input type="text" class="form-control" id="name" name="name" ngModel required #nameModel="ngModel">
+              <div style="color:red;font-size:12px;" *ngIf="nameModel.invalid && (nameModel.dirty || nameModel.touched)">Name is a required field</div>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error':emailModel.invalid && (emailModel.dirty || emailModel.touched)}">
+              <label class="control-label col-sm-2" for="email">Email</label>
+              <div class="col-sm-10 margin-bottom-small">
+                <input type="email" class="form-control" id="email" name="email" ngModel required #emailModel="ngModel">
+                <div style="color:red;font-size:12px;" *ngIf="emailModel.invalid && (emailModel.dirty || emailModel.touched)">Email is a required field</div>
+              </div>
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-error':feedModel.invalid && (feedModel.dirty || feedModel.touched)}">
+                <label class="control-label col-sm-2" for="name">Feedback</label>
+                <div class="col-sm-10 margin-bottom-small">
+                  <textarea class="form-control" id="feed" name="feed" ngModel required #feedModel="ngModel"></textarea>
+                  <div style="color:red;font-size:12px;" *ngIf="feedModel.invalid && (feedModel.dirty || feedModel.touched)">Feedback is a required field</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input  style="margin-left:18%;" type="submit" class="btn btn-primary">
+              </div>
+
+      </form>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="alert alert-success" *ngIf="formReview.valid && alertDisplay">
+      Thank You, Will reply back soon
+  </div>
+
+</div>
